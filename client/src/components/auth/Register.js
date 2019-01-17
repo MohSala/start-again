@@ -27,6 +27,11 @@ class Register extends Component {
         this.setState({errors: nextProps.errors})
       }
     }
+    componentDidMount() {
+      if(this.props.auth.isAuthenticated) {
+        this.props.history.push('/dashboard')
+      }
+    }
 
     onSubmit(e) {
       e.preventDefault()
@@ -56,7 +61,7 @@ class Register extends Component {
             <div className="form-group">
               <input 
               type="text" 
-              className={classnames('form-control form-control-lg',{'is-invalid':errors.name})} 
+              className={classnames('form-control form-control-lg',{'is-invalid':errors.name })} 
               placeholder="Name" name="name" 
               value={this.state.name} 
               onChange= {this.onChange} />

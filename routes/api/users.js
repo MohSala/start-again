@@ -73,7 +73,7 @@ if(!isValid) {
         if(!user) {
             errors.email = 'User not found'
             return res.status(400).json({
-                email: errors
+                
             })
         }
 
@@ -84,18 +84,18 @@ if(!isValid) {
                 const payload = {id:user._id,name:user.name,avatar:user.avatar}
         //Sign token
         jwt.sign(payload,key,{expiresIn: 3600}, (err,token) => {
-            if(err) throw err
-            else{
+            
+            
                 res.json({
                     status: 'Success',
                     token: 'Bearer ' + token
                 })
-            }
+            
         })
             }
             else{
                 errors.password = 'Incorrect Password'
-               return res.status(400).json({password: errors})
+               return res.status(400).json(errors)
             }
         })
     })
